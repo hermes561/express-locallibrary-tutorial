@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h1=title
+  
+
+  form#authform(method='POST' action='')
+    div.form-group
+      label(for='first_name') First Name:
+      input#first_name.form-control(type='text' placeholder='First name (Christian) last' name='first_name' required='true' value=(undefined===author ? '' : author.first_name) )
+      label(for='family_name') Family Name:
+      input#family_name.form-control(type='text' placeholder='Family name (surname)' name='family_name' required='true' value=(undefined===author ? '' : author.family_name))
+    div.form-group
+      label(for='date_of_birth') Date of birth:
+      input#date_of_birth.form-control(type='date' placeholder='dd/mm/yyyy' name='date_of_birth' value=(undefined===author ? '' : (undefined===author.date_of_birth_f) ? author.date_of_birth : author.date_of_birth_f) )
+      label(for='date_of_death') Date of death:
+      input#date_of_death.form-control(type='date' placeholder='dd/mm/yyyy' name='date_of_death' value=(undefined===author ? '' : (undefined===author.date_of_death_f) ? author.date_of_death : author.date_of_death_f) )
+      
+    button.btn.btn-primary(type='submit') Submit
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
+
+  script.
+    jQuery( document ).ready(function() {
+        
+        jQuery('#date_of_death').datepicker({
+            dateFormat: "dd/mm/yy",
+        });
+      
+        jQuery('#date_of_birth').datepicker({
+            dateFormat: "dd/mm/yy",
+            daysOfWeekDisabled: [0, 6],
+            onSelect: function(date) {
+                var minDate = $(this).datepicker('getDate');
+                minDate.setDate(minDate.getDate()+1);
+                jQuery('#date_of_death').val('');
+                jQuery('#date_of_death').datepicker("option", "minDate", minDate);
+            }
+        });
+
+        
+    });
+    

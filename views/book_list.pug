@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  
+  ol
+    each book in book_list
+      li 
+        a(href=book.url) #{book.title} 
+        |  (#{book.author.name}) -   #{book.available} available of #{book.inst}
+
+    else
+      li There are no books.

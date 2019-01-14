@@ -1,0 +1,28 @@
+extends layout
+
+block content
+
+    h1 Author: #{author.name}
+    p (#{author.living_dates})
+    
+    div(style='margin-left:20px;margin-top:20px')
+        
+        h4 Books
+        
+        dl
+            each book in author_books
+                dt 
+                    a(href=book.url) #{book.title}
+                dd(style='margin-bottom:15px;') #{book.summary}
+
+            else
+                p This author has no books.
+        
+        hr
+        p
+          a.dell_author(href=author.url+'/delete') Delete author
+        p
+          a.update_author(href=author.url+'/update') Update author
+    
+ 
+    
