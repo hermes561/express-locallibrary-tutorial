@@ -1,6 +1,9 @@
 {
   "name": "application-name",
   "version": "0.0.1",
+  "engine": {
+     "node":"8.10.0"
+   }, 
   "private": true,
   "scripts": {
     "start": "nodejs ./bin/www",
