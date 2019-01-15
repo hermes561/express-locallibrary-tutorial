@@ -11,17 +11,9 @@ var users = require('./routes/users');
 var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 var compression = require('compression');
 var helmet = require('helmet');
+//var cfenv = require('cfenv');
 
 var app = express();
-
-//Set up mongoose connection
-var mongoose = require('mongoose');
-var mongoDB = process.env.MONGODB_URI || 'mongodb://razvansandbox2:florentina56@ds253104.mlab.com:53104/razvan_library';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
-mongoose.Promise = global.Promise;
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -36,6 +28,18 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(compression()); //Compress all routes
 app.use(helmet());
+//var appEnv = cfenv.getAppEnv();
+
+//Set up mongoose connection
+var mongoose = require('mongoose');
+//var mongoDB = appEnv.getServiceURL('node-express-tutorial-mongodb') || 'mongodb://razvansandbox2:florentina56@ds253104.mlab.com:53104/razvan_library';
+var mongoDB = process.env.MONGODB_URI|| 'mongodb://razvansandbox2:florentina56@ds253104.mlab.com:53104/razvan_library';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

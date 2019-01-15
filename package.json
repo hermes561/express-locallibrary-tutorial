@@ -6,11 +6,12 @@
   },
   "private": true,
   "scripts": {
-    "start": "nodejs ./bin/www",
+    "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.3",
+    "cfenv": "^1.1.0",
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",
     "debug": "~4.1.1",
@@ -24,7 +25,8 @@
     "morgan": "~1.9.1",
     "pug": "^2.0.3",
     "serve-favicon": "^2.5.0",
-    "static-favicon": "~2.0.0-alpha"
+    "static-favicon": "~2.0.0-alpha",
+    "vcap_services": "^0.6.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
