@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "express-locallibrary-tutorial",
   "version": "0.0.1",
   "engine": {
     "node": "11.6.0"
@@ -14,7 +14,7 @@
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",
     "debug": "~4.1.1",
-    "express": "~4.16.4",
+    "express": "^4.16.4",
     "express-favicon": "^2.0.1",
     "express-validator": "^5.3.1",
     "helmet": "^3.15.0",
