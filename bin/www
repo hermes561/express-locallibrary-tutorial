@@ -1,4 +1,4 @@
-#!/usr/bin/nodejs
+
 var debug = require('debug')('express-locallibrary-tutorial');
 var app = require('../app');
 
