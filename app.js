@@ -32,8 +32,7 @@ app.use(helmet());
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-//var mongoDB = appEnv.getServiceURL('node-express-tutorial-mongodb') || 'mongodb://razvansandbox2:florentina56@ds253104.mlab.com:53104/razvan_library';
-var mongoDB = process.env.MONGODB_URI|| 'mongodb://razvansandbox2:florentina56@ds253104.mlab.com:53104/razvan_library';
+var mongoDB = process.env.MONGODB_URI|| 'mongodb://<user>:<pass><DATABASE_URL>/razvan_library';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
